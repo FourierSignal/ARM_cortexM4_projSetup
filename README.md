@@ -1,0 +1,1 @@
+# up1ARM_cortexM4-STM32F407VGT60-STM32F407G-DISC1-Audio_recording_projsetup-proj_setup1
