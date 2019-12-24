@@ -16,7 +16,7 @@ applic:
 	$(LINK)  --relocatable $(DEBUG_DIR)/Application/main.o  $(DEBUG_DIR)/Application/Audio_recording.o -o  $(DEBUG_DIR)/applic.o
 
 hal_drivers:
-	$(LINK)  --relocatable $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s_ex.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_rcc_ex.o $(DEBUG_HAL_DIR)/stm32f4xx_hal_dma.o -o  $(DEBUG_DIR)/hal_drivers.o
+	$(LINK)  --relocatable $(DEBUG_HAL_DIR)/stm32f4xx_hal.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s_ex.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_rcc_ex.o $(DEBUG_HAL_DIR)/stm32f4xx_hal_dma.o -o  $(DEBUG_DIR)/hal_drivers.o
 
 Audio_app:
 	$(CC)  applic.o hal_drivers.o  -o  $(DEBUG_DIR)/Audio_app
