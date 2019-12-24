@@ -10,9 +10,8 @@ INCL_PATH= -I$(PROJ_DIR)/Drivers/STM32f4xx_hal_drivers/Inc -I$(PROJ_DIR)/Drivers
 all: debug main.o Audio_recording.o
 
 debug:
-		mkdir -p $(DEBUG_DIR)
 		mkdir -p $(DEBUG_DIR)/Application
-		ls -ltr $(DEBUG_DIR)
+		#ls -ltr $(DEBUG_DIR)
 
 main.o:	main.c
 		$(CC) -c $(INCL_PATH)  main.c -o $(DEBUG_DIR)/Application/main.o
