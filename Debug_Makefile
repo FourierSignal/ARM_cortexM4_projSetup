@@ -1,24 +1,27 @@
 PROJ_DIR=/home/jaguar/Embedded_Rel/Makefile_type_projects/STM32F407VG_makefilebased_Audio_proj
 DEBUG_DIR=$(PROJ_DIR)/Debug
 DEBUG_HAL_DIR	:= $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers
-
+DEBUG_CMSIS_DIR	:= $(DEBUG_DIR)/Drivers/CMSIS
 
 CROSS_COMPILE=/home/jaguar/Embedded_Rel/Makefile_type_projects/STM32cubeIDE_toolcahin/tools/bin/arm-none-eabi-
 CC		:= ${CROSS_COMPILE}gcc
 LINK	:= ${CROSS_COMPILE}ld
 
 
-all: debug applic hal_drivers Audio_app 
+all: debug applic cmsis_drivers hal_drivers Audio_app 
 
 debug:
 	@echo hello
 applic:
 	$(LINK)  --relocatable $(DEBUG_DIR)/Application/main.o  $(DEBUG_DIR)/Application/Audio_recording.o -o  $(DEBUG_DIR)/applic.o
 
+cmsis_drivers:
+	$(LINK)  --relocatable $(DEBUG_CMSIS_DIR)/Device/STM32F4xx/system_stm32f4xx.o  -o  $(DEBUG_DIR)/cmsis_drivers.o
+
 hal_drivers:
 	$(LINK)  --relocatable $(DEBUG_HAL_DIR)/stm32f4xx_hal.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_i2s_ex.o  $(DEBUG_HAL_DIR)/stm32f4xx_hal_rcc_ex.o $(DEBUG_HAL_DIR)/stm32f4xx_hal_dma.o   $(DEBUG_HAL_DIR)/stm32f4xx_hal_cortex.o      -o  $(DEBUG_DIR)/hal_drivers.o
 
 Audio_app:
-	$(CC)  applic.o hal_drivers.o  -o  $(DEBUG_DIR)/Audio_app
+	$(CC)  applic.o hal_drivers.o cmsis_drivers.o   -o  $(DEBUG_DIR)/Audio_app
 	rm applic.o hal_drivers.o
 
