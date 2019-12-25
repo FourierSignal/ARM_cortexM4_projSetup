@@ -285,10 +285,9 @@ void HAL_MPU_Enable(uint32_t MPU_Control)
   
   /* Enable fault exceptions */
   SCB->SHCSR |= SCB_SHCSR_MEMFAULTENA_Msk;
-  
   /* Ensure MPU setting take effects */
   __DSB();
-  __ISB();
+  __ISB(); 
 }
 
 /**

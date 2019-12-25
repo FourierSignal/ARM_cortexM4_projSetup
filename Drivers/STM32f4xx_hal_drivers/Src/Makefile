@@ -30,4 +30,6 @@ stm32f4xx_hal.o:	stm32f4xx_hal.c
 	$(CC) -c $(INCL_PATH)  stm32f4xx_hal.c -o $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers/stm32f4xx_hal.o
 
 stm32f4xx_hal_cortex.o:	stm32f4xx_hal_cortex.c
-	$(CC) -c $(INCL_PATH)  stm32f4xx_hal_cortex.c -o $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers/stm32f4xx_hal_cortex.o
+#	$(CC) -mthumb -mthumb-interwork  -c $(INCL_PATH)  stm32f4xx_hal_cortex.c -o $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers/stm32f4xx_hal_cortex.o
+#	$(CC) -marm -mcpu=cortex-m4  -march=armv7e-m  -c $(INCL_PATH)  stm32f4xx_hal_cortex.c -o $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers/stm32f4xx_hal_cortex.o
+	$(CC)  -mcpu=cortex-m4  -march=armv7e-m  -c $(INCL_PATH)  stm32f4xx_hal_cortex.c -o $(DEBUG_DIR)/Drivers/STM32f4xx_hal_drivers/stm32f4xx_hal_cortex.o
